@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://browseCaption"
+        focusComponent="typesTable"
+        messagesPack="com.company.speedypizza2.web.screens.type">
+    <data readOnly="true">
+        <collection id="typesDc"
+                    class="com.company.speedypizza2.entity.Type"
+                    view="_local">
+            <loader id="typesDl">
+                <query>
+                    <![CDATA[select e from speedypizza2_Type e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="typesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="typesTable"
+                dataLoader="typesDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="typesTable"
+                    width="100%"
+                    dataContainer="typesDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="typesTable.create"/>
+                <button id="editBtn" action="typesTable.edit"/>
+                <button id="removeBtn" action="typesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

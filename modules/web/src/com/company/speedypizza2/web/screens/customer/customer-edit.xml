@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://editorCaption"
+        focusComponent="form"
+        messagesPack="com.company.speedypizza2.web.screens.customer">
+    <data>
+        <instance id="customerDc"
+                  class="com.company.speedypizza2.entity.Customer"
+                  view="customer-view">
+            <loader id="customerDl">
+                <query>
+                    <![CDATA[
+                    select c from speedypizza2_Customer c
+                    ]]>
+                </query>
+            </loader>
+        </instance>
+        <collection id="ordersDc"
+                    class="com.company.speedypizza2.entity.Order"
+                    view="order-view">
+            <loader id="orderDl">
+                <query>
+                    <![CDATA[
+                    select o from speedypizza2_Order o
+                    ]]>
+                </query>
+            </loader>
+        </collection>
+        <!--        <collection id="customOrdersDc"
+                            class="com.company.speedypizza2.entity.Order"
+                            view="order-view">
+                    <loader id="customOrdersDl">
+                        <query>
+                            <![CDATA[
+                            select o from speedypizza2_Order o where o.customer = :customer.name
+                            ]]>
+                        </query>
+                    </loader>
+                </collection>-->
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <tabSheet>
+            <tab id="customerDataTab" caption="msg://customerData" expand="form">
+                <form id="form" dataContainer="customerDc">
+                    <column width="250px">
+                        <textField id="nameField" property="name"/>
+                        <textField id="phoneNumberField" property="phoneNumber"/>
+                        <textField id="deliveryAddressField" property="deliveryAddress"/>
+                    </column>
+                </form>
+            </tab>
+            <tab id="ordersTab" expand="ordersBox" caption="msg://Orders">
+                <groupBox id="ordersBox" caption="msg://Orders">
+                    <table id="ordersTable"
+                           height="200px"
+                           width="100%"
+                           dataContainer="ordersDc">
+                        <actions>
+                            <action id="create"/>
+                            <action id="edit"/>
+                            <action id="remove"/>
+                        </actions>
+                        <columns>
+                            <column id="orderTime" caption="Order Time"/>
+                            <column id="deliveryTime" caption="Delivery Time"/>
+                            <column id="dishes" caption="Dishes"/>
+                            <column id="discount" caption="Discount"/>
+                            <column id="totalAmount" caption="Total"/>
+                        </columns>
+                        <buttonsPanel>
+                            <button action="ordersTable.create" caption="Create"/>
+                            <button action="ordersTable.edit" caption="Edit"/>
+                            <button action="ordersTable.remove" caption="Remove"/>
+                        </buttonsPanel>
+                    </table>
+                </groupBox>
+            </tab>
+        </tabSheet>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

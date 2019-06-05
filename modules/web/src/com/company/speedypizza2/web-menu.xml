@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
+    <menu id="application-speedypizza2" insertBefore="administration">
+        <item screen="speedypizza2_Customer.browse"/>
+        <item screen="speedypizza2_Dish.browse"/>
+        <item screen="speedypizza2_Order.browse"/>
+        <item screen="speedypizza2_Type.browse"/>
+    </menu>
+</menu-config>
