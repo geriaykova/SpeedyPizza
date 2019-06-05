@@ -1,6 +1,6 @@
 <window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
         class="com.company.speedypizza2.web.screens.mainWindow.ExtAppMainWindow"
-        caption="mainMsg://application.caption">
+        caption="Speedy Pizza App">
     <layout expand="horizontalWrap"
             stylename="c-sidemenu-responsive"
             responsive="true">
@@ -29,7 +29,7 @@
                       stylename="c-sidemenu-title"
                       width="100%">
                     <label id="appTitleLabel"
-                           value="mainMsg://application.logoLabel"/>
+                           value="Speedy Pizza App"/>
                 </hbox>
                 <cssLayout id="sideMenuWrap"
                            stylename="c-sidemenu-wrap">
@@ -65,7 +65,7 @@
                            align="MIDDLE_CENTER"
                            width="100%"
                            stylename="c-welcome-text"
-                           value="mainMsg://application.welcomeText"/>
+                           value="Welcome to Speedy Pizza"/>
                 </initialLayout>
             </workArea>
         </hbox>

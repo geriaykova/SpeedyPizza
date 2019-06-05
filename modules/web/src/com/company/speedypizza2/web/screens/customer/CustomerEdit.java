@@ -24,16 +24,16 @@ public class CustomerEdit extends StandardEditor<Customer> {
     @Inject
     private InstanceLoader<Customer> customerDl;
 
-    @Subscribe
-    private void onInitEntity(InitEntityEvent<Customer> event) {
-//        while(ordersDc.getItems().iterator().hasNext()){
-//            if()
+//    @Subscribe
+//    private void onInitEntity(InitEntityEvent<Customer> event) {
+////        while(ordersDc.getItems().iterator().hasNext()){
+////            if()
+////        }
+//        customerDl.load();
+//        for(Order order : ordersDc.getItems()){
+//            if(order.getCustomer().equals(getEditedEntity())){
+//                orderDl.load();
+//            }
 //        }
-        customerDl.load();
-        for(Order order : ordersDc.getItems()){
-            if(order.getCustomer().equals(getEditedEntity())){
-                orderDl.load();
-            }
-        }
-    }
+//    }
 }

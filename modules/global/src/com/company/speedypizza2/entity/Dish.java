@@ -26,8 +26,9 @@ public class Dish extends StandardEntity {
     @Column(name = "INGREDIENTS")
     protected String ingredients;
 
+    @NotNull
     @DecimalMin(message = "price of the dish must be at least 0lv", value = "0")
-    @Column(name = "PRICE")
+    @Column(name = "PRICE", nullable = false)
     protected BigDecimal price;
 
     @JoinTable(name = "SPEEDYPIZZA2_ORDER_DISH_LINK",
