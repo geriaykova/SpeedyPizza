@@ -12,6 +12,7 @@
         <property name="remoteServices">
             <map>
                 <entry key="speedypizza2_OrderService" value="com.company.speedypizza2.service.OrderService"/>
+                <entry key="speedypizza2_CustomerService" value="com.company.speedypizza2.service.CustomerService"/>
             </map>
         </property>
     </bean>

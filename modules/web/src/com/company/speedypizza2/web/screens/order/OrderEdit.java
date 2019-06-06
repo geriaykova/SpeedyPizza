@@ -2,6 +2,7 @@ package com.company.speedypizza2.web.screens.order;
 
 import com.company.speedypizza2.entity.Customer;
 import com.company.speedypizza2.entity.Dish;
+import com.company.speedypizza2.service.CustomerService;
 import com.company.speedypizza2.service.OrderService;
 import com.haulmont.cuba.gui.Notifications;
 import com.haulmont.cuba.gui.components.HasValue;
@@ -10,6 +11,7 @@ import com.haulmont.cuba.gui.model.CollectionContainer;
 import com.haulmont.cuba.gui.model.CollectionPropertyContainer;
 import com.haulmont.cuba.gui.screen.*;
 import com.company.speedypizza2.entity.Order;
+import com.haulmont.cuba.security.global.UserSession;
 
 import javax.inject.Inject;
 import java.math.BigDecimal;
@@ -25,6 +27,10 @@ public class OrderEdit extends StandardEditor<Order> {
     private CollectionPropertyContainer<Dish> dishesDc;
     @Inject
     private Notifications notifications;
+    @Inject
+    private UserSession userSession;
+    @Inject
+    private CustomerService customerService;
 
 
     @Subscribe(id = "dishesDc", target = Target.DATA_CONTAINER)
@@ -62,6 +68,7 @@ public class OrderEdit extends StandardEditor<Order> {
         event.getEntity().setDeliveryAddress("-");
         event.getEntity().setClientName("-");
         event.getEntity().setPhoneNumber("-");
+        event.getEntity().setCustomer(customerService.getCustomerByUser(userSession.getUser()));
     }
 
     @Subscribe("customerField")

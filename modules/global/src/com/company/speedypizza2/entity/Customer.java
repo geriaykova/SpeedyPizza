@@ -2,12 +2,12 @@ package com.company.speedypizza2.entity;
 
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
+import com.haulmont.cuba.core.entity.annotation.Lookup;
+import com.haulmont.cuba.core.entity.annotation.LookupType;
+import com.haulmont.cuba.security.entity.User;
 import org.hibernate.validator.constraints.Length;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.util.List;
@@ -34,6 +34,19 @@ public class Customer extends StandardEntity {
 
     @OneToMany(mappedBy = "customer")
     protected List<Order> orders;
+
+    @Lookup(type = LookupType.DROPDOWN, actions = {"lookup"})
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "USER_ID", unique = true)
+    protected User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public List<Order> getOrders() {
         return orders;

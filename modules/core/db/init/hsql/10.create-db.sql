@@ -48,6 +48,7 @@ create table SPEEDYPIZZA2_CUSTOMER (
     NAME varchar(255) not null,
     PHONE_NUMBER varchar(255) not null,
     DELIVERY_ADDRESS varchar(255) not null,
+    USER_ID varchar(36),
     --
     primary key (ID)
 )^

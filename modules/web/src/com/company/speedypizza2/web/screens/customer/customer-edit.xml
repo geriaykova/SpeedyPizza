@@ -9,6 +9,13 @@
                   view="customer-view">
             <loader/>
         </instance>
+        <collection id="usersDc" class="com.haulmont.cuba.security.entity.User" view="_minimal">
+            <loader id="usersLc">
+                <query>
+                    <![CDATA[select e from sec$User e]]>
+                </query>
+            </loader>
+        </collection>
         <collection id="ordersDc"
                     class="com.company.speedypizza2.entity.Order"
                     view="order-view">
@@ -37,6 +44,11 @@
     <layout expand="editActions" spacing="true">
                 <form id="form" dataContainer="customerDc">
                     <column width="250px">
+                        <lookupPickerField id="userField" optionsContainer="usersDc" property="user">
+                            <actions>
+                                <action id="lookup" type="picker_lookup"/>
+                            </actions>
+                        </lookupPickerField>
                         <textField id="nameField" property="name"/>
                         <textField id="phoneNumberField" property="phoneNumber"/>
                         <textField id="deliveryAddressField" property="deliveryAddress"/>
