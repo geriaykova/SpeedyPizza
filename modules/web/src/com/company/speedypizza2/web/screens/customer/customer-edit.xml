@@ -7,13 +7,7 @@
         <instance id="customerDc"
                   class="com.company.speedypizza2.entity.Customer"
                   view="customer-view">
-            <loader id="customerDl">
-                <query>
-                    <![CDATA[
-                    select c from speedypizza2_Customer c
-                    ]]>
-                </query>
-            </loader>
+            <loader/>
         </instance>
         <collection id="ordersDc"
                     class="com.company.speedypizza2.entity.Order"
@@ -41,8 +35,6 @@
     <dialogMode height="600"
                 width="800"/>
     <layout expand="editActions" spacing="true">
-        <tabSheet>
-            <tab id="customerDataTab" caption="msg://customerData" expand="form">
                 <form id="form" dataContainer="customerDc">
                     <column width="250px">
                         <textField id="nameField" property="name"/>
@@ -50,8 +42,6 @@
                         <textField id="deliveryAddressField" property="deliveryAddress"/>
                     </column>
                 </form>
-            </tab>
-            <tab id="ordersTab" expand="ordersBox" caption="msg://Orders">
                 <groupBox id="ordersBox" caption="msg://Orders">
                     <table id="ordersTable"
                            height="200px"
@@ -76,8 +66,6 @@
                         </buttonsPanel>
                     </table>
                 </groupBox>
-            </tab>
-        </tabSheet>
         <hbox id="editActions" spacing="true">
             <button action="windowCommitAndClose"/>
             <button action="windowClose"/>

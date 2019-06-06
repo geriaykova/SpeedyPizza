@@ -15,14 +15,14 @@ import javax.inject.Inject;
 @EditedEntityContainer("customerDc")
 @LoadDataBeforeShow
 public class CustomerEdit extends StandardEditor<Customer> {
-    @Inject
-    private CollectionContainer<Order> ordersDc;
-    @Inject
-    private CollectionLoader<Order> orderDl;
-    @Inject
-    private InstanceContainer<Customer> customerDc;
-    @Inject
-    private InstanceLoader<Customer> customerDl;
+//    @Inject
+//    private CollectionContainer<Order> ordersDc;
+//    @Inject
+//    private CollectionLoader<Order> orderDl;
+//    @Inject
+//    private InstanceContainer<Customer> customerDc;
+//    @Inject
+//    private InstanceLoader<Customer> customerDl;
 
 //    @Subscribe
 //    private void onInitEntity(InitEntityEvent<Customer> event) {
