@@ -3,6 +3,7 @@ package com.company.speedypizza2.web.screens.order;
 import com.company.speedypizza2.entity.Customer;
 import com.company.speedypizza2.entity.Dish;
 import com.company.speedypizza2.service.CustomerService;
+import com.company.speedypizza2.service.DiscountService;
 import com.company.speedypizza2.service.OrderService;
 import com.haulmont.cuba.gui.Notifications;
 import com.haulmont.cuba.gui.components.HasValue;
@@ -31,14 +32,22 @@ public class OrderEdit extends StandardEditor<Order> {
     private UserSession userSession;
     @Inject
     private CustomerService customerService;
+    @Inject
+    private DiscountService discountService;
 
 
     @Subscribe(id = "dishesDc", target = Target.DATA_CONTAINER)
     private void onDishesDcCollectionChange(CollectionContainer.CollectionChangeEvent<Dish> event) {
         if(event.getChangeType() != CollectionChangeType.REFRESH){
             Order order = getEditedEntity();
+//            order.getDishes().size() > 2
+            if(event.getSource().getItems().size() > 2) {
+                discountService.checkForDiscount(order);
+                System.out.println("Order's discount: " + order.getDiscount());
+            }
             BigDecimal amount = orderService.calculateAmount(order);
             order.setTotalAmount(amount);
+            System.out.println("number of dishes: " + order.getDishes().size());
         }
     }
 
@@ -47,6 +56,8 @@ public class OrderEdit extends StandardEditor<Order> {
         BigDecimal amount = orderService.calculateAmount(getEditedEntity());
         getEditedEntity().setTotalAmount(amount);
     }
+
+
 
 
 

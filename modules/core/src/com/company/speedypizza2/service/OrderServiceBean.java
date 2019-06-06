@@ -2,19 +2,22 @@ package com.company.speedypizza2.service;
 
 import com.company.speedypizza2.entity.Dish;
 import com.company.speedypizza2.entity.Order;
+import org.graalvm.compiler.core.common.type.ArithmeticOpTable;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Service(OrderService.NAME)
 public class OrderServiceBean implements OrderService {
+
+
 
     @Override
     public BigDecimal calculateAmount(Order order) {
         BigDecimal amount = BigDecimal.valueOf(0);
         if(order.getDishes() != null ){
             for(Dish d : order.getDishes()){
-
                 amount = amount.add(d.getPrice());
             }
         }
@@ -25,25 +28,29 @@ public class OrderServiceBean implements OrderService {
         return amount;
     }
 
-    //TODO: как да покажа само order-ите на дадения customer?
- /*   private List<Order> getOrders(EntityManager em){
-        TypedQuery<Order> query = em.createQuery(
-                //distinct - гледа типовете на consumables, не броя им
-                "select distinct c from petclinic_Visit v join v.consumables c " +
-                        "where @between(c.createTs, now-7, now+1, day)"
-                "select distinct * from speedypizza_Order o join o.customer c" +
-                        "where c = c",
-                Order.class);
-        query.setViewName(View.LOCAL);
+//    @Override
+//    public void checkForDiscount(Order order){
+//        if(order.getDishes().size() > 3 && order.getDishes().size() < 11){
+//            make5PercentDiscount(order);
+//        }
+//        else if(order.getDishes().size() > 10){
+//            make10PercentDiscount(order);
+//        }
+//    }
+//
+//
+//    @Override
+//    public void make5PercentDiscount(Order order){
+//        order.setDiscount(order.getDiscount().add(BigDecimal.valueOf(5)));
+//    }
+//
+//    @Override
+//    public void make10PercentDiscount(Order order) {
+//        order.setDiscount(order.getDiscount().add(BigDecimal.valueOf(10)));
+//    }
 
-        List<Order> orders = query.getResultList();
-        return orders;
-    }
 
-    @Override
-    public List<Consumable> getUsedConsumables() {
-        return persistence.callInTransaction(this::getConsumables);
-    }
-*/
+
+
 
 }

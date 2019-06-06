@@ -13,6 +13,7 @@
             <map>
                 <entry key="speedypizza2_OrderService" value="com.company.speedypizza2.service.OrderService"/>
                 <entry key="speedypizza2_CustomerService" value="com.company.speedypizza2.service.CustomerService"/>
+                <entry key="speedypizza2_DiscountService" value="com.company.speedypizza2.service.DiscountService"/>
             </map>
         </property>
     </bean>
