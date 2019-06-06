@@ -58,9 +58,6 @@ public class OrderEdit extends StandardEditor<Order> {
     }
 
 
-
-
-
     @Subscribe
     private void onBeforeCommitChanges(BeforeCommitChangesEvent event) {
         if(getEditedEntity().getDeliveryTime().before(getEditedEntity().getOrderTime())) {
@@ -84,7 +81,9 @@ public class OrderEdit extends StandardEditor<Order> {
 
     @Subscribe("customerField")
     private void onCustomerFieldValueChange(HasValue.ValueChangeEvent<Customer> event) {
+        if(event.getValue().getName() != null){
         getEditedEntity().setClientName(event.getValue().getName());
+        }
         getEditedEntity().setPhoneNumber(event.getValue().getPhoneNumber());
         getEditedEntity().setDeliveryAddress(event.getValue().getDeliveryAddress());
     }

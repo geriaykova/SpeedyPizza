@@ -40,20 +40,20 @@ public class Dish extends StandardEntity {
     @Column(name = "QUANTITY")
     protected String quantity;
 
-    public void setQuantity(String quantity) {
-        this.quantity = quantity;
-    }
-
-    public String getQuantity() {
-        return quantity;
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 
     public List<Order> getOrders() {
         return orders;
     }
 
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
+    public void setQuantity(String quantity) {
+        this.quantity = quantity;
+    }
+
+    public String getQuantity() {
+        return quantity;
     }
 
     public BigDecimal getPrice() {
