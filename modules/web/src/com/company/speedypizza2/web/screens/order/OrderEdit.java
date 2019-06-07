@@ -32,19 +32,14 @@ public class OrderEdit extends StandardEditor<Order> {
     private UserSession userSession;
     @Inject
     private CustomerService customerService;
-    @Inject
-    private DiscountService discountService;
 
 
     @Subscribe(id = "dishesDc", target = Target.DATA_CONTAINER)
     private void onDishesDcCollectionChange(CollectionContainer.CollectionChangeEvent<Dish> event) {
         if(event.getChangeType() != CollectionChangeType.REFRESH){
             Order order = getEditedEntity();
-//            order.getDishes().size() > 2
-            if(event.getSource().getItems().size() > 2) {
-                discountService.checkForDiscount(order);
-                System.out.println("Order's discount: " + order.getDiscount());
-            }
+            BigDecimal discount = orderService.calculateDiscount(order);
+            order.setDiscount(discount);
             BigDecimal amount = orderService.calculateAmount(order);
             order.setTotalAmount(amount);
             System.out.println("number of dishes: " + order.getDishes().size());
