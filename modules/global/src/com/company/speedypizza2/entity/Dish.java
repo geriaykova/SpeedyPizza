@@ -38,7 +38,15 @@ public class Dish extends StandardEntity {
     protected List<Order> orders;
 
     @Column(name = "QUANTITY")
-    protected String quantity;
+    protected BigDecimal quantity;
+
+    public void setQuantity(BigDecimal quantity) {
+        this.quantity = quantity;
+    }
+
+    public BigDecimal getQuantity() {
+        return quantity;
+    }
 
     public void setOrders(List<Order> orders) {
         this.orders = orders;
@@ -46,14 +54,6 @@ public class Dish extends StandardEntity {
 
     public List<Order> getOrders() {
         return orders;
-    }
-
-    public void setQuantity(String quantity) {
-        this.quantity = quantity;
-    }
-
-    public String getQuantity() {
-        return quantity;
     }
 
     public BigDecimal getPrice() {

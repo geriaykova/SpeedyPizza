@@ -54,29 +54,4 @@ public class OrderServiceBean implements OrderService {
         }
     }
 
-//    @Override
-//    public void checkForDiscount(Order order){
-//        if(order.getDishes().size() > 3 && order.getDishes().size() < 11){
-//            make5PercentDiscount(order);
-//        }
-//        else if(order.getDishes().size() > 10){
-//            make10PercentDiscount(order);
-//        }
-//    }
-//
-//
-//    @Override
-//    public void make5PercentDiscount(Order order){
-//        order.setDiscount(order.getDiscount().add(BigDecimal.valueOf(5)));
-//    }
-//
-//    @Override
-//    public void make10PercentDiscount(Order order) {
-//        order.setDiscount(order.getDiscount().add(BigDecimal.valueOf(10)));
-//    }
-
-
-
-
-
 }

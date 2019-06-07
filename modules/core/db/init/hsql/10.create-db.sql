@@ -13,7 +13,7 @@ create table SPEEDYPIZZA2_DISH (
     TYPE_ID varchar(36) not null,
     INGREDIENTS varchar(255),
     PRICE decimal(19, 2) not null,
-    QUANTITY varchar(255),
+    QUANTITY decimal(19, 2),
     --
     primary key (ID)
 )^

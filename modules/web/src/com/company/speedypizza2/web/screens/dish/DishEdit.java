@@ -28,6 +28,8 @@ public class DishEdit extends StandardEditor<Dish> {
     private InstanceContainer<Dish> dishInstanceContainer;
     @Inject
     private TextField<String> quantityField;
+
+
 /*
 
     @Subscribe
@@ -43,12 +45,10 @@ public class DishEdit extends StandardEditor<Dish> {
 
     //TODO: оправи го, не работи
     @Subscribe("quantityField")
-    private void onQuantityFieldValueChange(HasValue.ValueChangeEvent<String> event) {
-        getEditedEntity().setQuantity(event.getValue());
-/*        dishInstanceContainer = new InstanceContainerImpl<>(metadata.getClass(Dish.class));
-        quantityField.setValue(event.getValue());
-        quantityField.setValueSource(new ContainerValueSource<>(dishInstanceContainer, "quantity"));*/
-
-        dishInstanceContainer.getItem().setQuantity(event.getValue());
+    private void onQuantityFieldValueChange(HasValue.ValueChangeEvent<BigDecimal> event) {
+        //        getEditedEntity().setQuantity(event.getValue());
+        BigDecimal quantity = BigDecimal.valueOf(0);
+        getEditedEntity().setQuantity(quantity.add(event.getValue()));
     }
+
 }
